@@ -42,12 +42,12 @@ public class DishesController {
 		return dishesService.findByType(type);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/dish/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/dishes/{id}")
 	public Dish getById(@PathVariable Integer id) {
 		return dishesService.getById(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/dish")
+	@RequestMapping(method = RequestMethod.POST, value = "/dishes")
 	public Dish create(@RequestBody Dish dish) {
 		return dishesService.saveOrUpdate(dish);
 	}
