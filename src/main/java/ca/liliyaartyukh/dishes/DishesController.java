@@ -2,7 +2,7 @@ package ca.liliyaartyukh.dishes;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ca.liliyaartyukh.dishes.domain.Dish;
 import ca.liliyaartyukh.dishes.services.DishService;
 
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8090", "http://dishes.github.io/"}, maxAge = 3600)
 @RestController
 public class DishesController {
 
@@ -22,12 +23,13 @@ public class DishesController {
         this.dishesService = dishesService;
     }
 	
-    @RequestMapping("/")
+/*    @RequestMapping("/")
     public String redirToList(){
         return "redirect:/dishes";
     }
+    */
     
-    	@RequestMapping(method = RequestMethod.GET, value = "/dishes")
+    @RequestMapping(method = RequestMethod.GET, value="/dishes" )
 	public List<Dish> getAll() {
 		return dishesService.listAll();
 	}
@@ -47,12 +49,12 @@ public class DishesController {
 		return dishesService.getById(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/dishes")
+	@RequestMapping(method = RequestMethod.POST, value="/dishes")
 	public Dish create(@RequestBody Dish dish) {
 		return dishesService.saveOrUpdate(dish);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/dishes")
+	@RequestMapping(method = RequestMethod.PUT , value="/dishes")
 	public Dish update(@RequestBody Dish input) {
 		return dishesService.saveOrUpdate(input);
 	}
