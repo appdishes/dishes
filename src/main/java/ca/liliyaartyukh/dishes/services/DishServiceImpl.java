@@ -1,5 +1,6 @@
 package ca.liliyaartyukh.dishes.services;
 
+import org.assertj.core.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import ca.liliyaartyukh.dishes.repositories.DishesRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DishServiceImpl implements DishService {
@@ -31,8 +33,14 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public Dish getById(Integer id) {
-        return dishesRepository.findById(id).orElse(null);
+    public List<Dish> getById(Integer id) {
+    	List<Dish> dishesToReturn = null;
+    	Optional<Dish> dishes = dishesRepository.findById(id);
+    	if(dishes != null && dishes.isPresent()) {
+    		dishesToReturn = new ArrayList<Dish>();
+    		dishesToReturn.add(dishes.get());
+    	}
+        return dishesToReturn;
     }
 
     @Override

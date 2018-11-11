@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ca.liliyaartyukh.dishes.domain.Dish;
 import ca.liliyaartyukh.dishes.services.DishService;
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8090", "http://dishes.github.io/", "https://appdishes.herokuapp.com/"}, maxAge = 3600)
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8090", "https://appdishes.github.io/", "https://appdishes.herokuapp.com/"}, maxAge = 3600)
 @RestController
 public class DishesController {
 
@@ -45,7 +45,7 @@ public class DishesController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/dishes/{id}")
-	public Dish getById(@PathVariable Integer id) {
+	public List<Dish> getById(@PathVariable Integer id) {
 		return dishesService.getById(id);
 	}
 	

@@ -8,7 +8,7 @@ public interface DishService {
 
     List<Dish> listAll();
 
-    Dish getById(Integer id);
+    List<Dish> getById(Integer id);
 
     Dish saveOrUpdate(Dish product);
 
