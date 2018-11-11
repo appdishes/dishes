@@ -24,7 +24,7 @@ public class Application {
 	        return new WebMvcConfigurerAdapter() {
 	            @Override
 	            public void addCorsMappings(CorsRegistry registry) {
-	                registry.addMapping("/dishes").allowedOrigins("http://localhost:4200", "http://localhost:8090", "https://dishes.github.io/", "https://appdishes.herokuapp.com/");
+	                registry.addMapping("/dishes").allowedOrigins("http://localhost:4200", "http://localhost:8090", "https://dishes.github.io", "https://appdishes.herokuapp.com/");
 	            }
 	        };
 	    }
