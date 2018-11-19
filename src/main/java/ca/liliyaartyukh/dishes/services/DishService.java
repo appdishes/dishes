@@ -10,9 +10,13 @@ public interface DishService {
 
     List<Dish> getById(Integer id);
 
-    Dish saveOrUpdate(Dish product);
+    Dish updateExisting(Dish product);
+    
+    Dish saveNew(Dish product);
 
 	List<Dish> findByType(String type);
+	
+	List<Dish> findByName(String name);
 
 	List<Dish> findByCategory(String category);
 

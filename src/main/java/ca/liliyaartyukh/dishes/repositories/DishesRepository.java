@@ -12,5 +12,6 @@ public interface DishesRepository extends CrudRepository<Dish, Integer> {
 
     public List<Dish> findByCategory(String category);
     public List<Dish> findByType(String type);
+	public List<Dish> findByName(String name);
 
 }
