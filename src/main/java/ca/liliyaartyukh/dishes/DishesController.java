@@ -63,6 +63,16 @@ public class DishesController {
 		}
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value = "/dishes/search")
+	public List<Dish> find(@RequestParam("search") String searchWord) {
+		
+		if( searchWord != null && !searchWord.isEmpty()) {
+			return dishesService.search(searchWord);
+		}else {
+			throw new BackendException("Invalid request!");
+		}
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/dishes/{id}")
 	public List<Dish> getById(@PathVariable Integer id) {
 		return dishesService.getById(id);

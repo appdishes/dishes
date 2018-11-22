@@ -16,6 +16,8 @@ public interface DishService {
 
 	List<Dish> findByType(String type);
 	
+	List<Dish> search(String searchWord);
+	
 	List<Dish> findByName(String name);
 
 	List<Dish> findByCategory(String category);

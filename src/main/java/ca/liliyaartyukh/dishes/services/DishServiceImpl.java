@@ -109,6 +109,19 @@ public class DishServiceImpl implements DishService {
 		
 	}
 
+
+	@Override
+	public List<Dish> search(String searchWord) {
+		
+    	List<Dish> dishes = this.findByCategory(searchWord);	
+    	
+    	dishes.addAll(this.findByName(searchWord));
+    	
+    	dishes.addAll(this.findByType(searchWord));
+  
+    	return dishes;
+	}
+
     /*
     @Override
     public Dish saveOrUpdateProductForm(ProductForm productForm) {
